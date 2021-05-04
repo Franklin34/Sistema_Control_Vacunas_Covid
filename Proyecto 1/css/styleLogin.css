@@ -1,133 +1,99 @@
-@import "bourbon";
-
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700);
 @import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css);
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 
 @font-face {
-    font-family: "TrebuchetMS";
-    src: url(fonts/TrebuchetMS.ttf);
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: "BebasNeue";
-    src: url(fonts/BebasNeue.otf);
-    font-weight: normal;
-    font-style: normal;
+  font-family: "TrebuchetMS";
+  src: url(fonts/TrebuchetMS.ttf);
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "WebSymbolsRegular";
-    src: url(fonts/websymbols-regular-webfont.eot);
-    src: url(fonts/websymbols-regular-webfont.eot?#iefix) format('embedded-opentype'),
-        url(fonts/websymbols-regular-webfont.woff) format('woff'),
-        url(fonts/websymbols-regular-webfont.ttf) format('truetype'),
-        url(fonts/websymbols-regular-webfont.svg#WebSymbolsRegular) format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "BebasNeue";
+  src: url(fonts/BebasNeue.otf);
+  font-weight: normal;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: "WebSymbolsRegular";
+  src: url(fonts/websymbols-regular-webfont.eot);
+  src: url(fonts/websymbols-regular-webfont.eot?#iefix) format('embedded-opentype'),
+    url(fonts/websymbols-regular-webfont.woff) format('woff'),
+    url(fonts/websymbols-regular-webfont.ttf) format('truetype'),
+    url(fonts/websymbols-regular-webfont.svg#WebSymbolsRegular) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 * {
   margin: 0;
   padding: 0;
 }
 
-html {
-  background-image: url("../img/FondoLogin.jpg");
-}
+
 
 body {
-  background: transparent;
-
-  position:absolute;
-   bottom: 25%;
-    top:200px;
-    left:300px;
-    right:700px;
-
+  background-image: url("../img/FondoLogin.jpg");
+  background-repeat: no-repeat;
+  background-position: center 1px;
+  background-size: cover;
+  height: 25vh;
+  min-height: 25rem;
 }
 
 body, input, button {
   font-family: 'BebasNeue', sans-serif;
 }
 
-
 .login {
-
   height: auto;
-
   padding: 15px;
   width: 400px;
   min-height: 400px;
   margin: 2% auto 0 auto;
   border-radius: 5px;
+  margin-top: 200px;
+  margin-left: 300px;
+}
 
-  .heading {
+.login.heading {
+  text-align: center;
+  margin-top: 1%;
+}
 
-    text-align: center;
-    margin-top: 1%;
+.login.heading.h2 {
+  font-family: "BebasNeue";
+  font-size: 3em;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  display: inline-block;
+  padding-bottom: 5px;
+  text-shadow: 1px 1px 3px;
+}
 
-  ;
+form.input-group {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
 
+form.input.form-control {
 
-      h2 {
+  padding: 10px;
+  font-size: 1.6em;
+  width: 100%;
+  background: transparent;
+}
 
-
-      font-family: "BebasNeue";
-      font-size: 3em;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.7);
-      display: inline-block;
-      padding-bottom: 5px;
-      text-shadow: 1px 1px 3px $shadow-color;
-    }
-  }
-
-  form {
-    .input-group {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-
-      &:last-of-type {
-        border-top: none;
-      }
-    }
-
-    input.form-control {
-      @include normalize-input;
-
-      padding: 10px;
-      font-size: 1.6em;
-      width: 100%;
-      background: transparent;
-      color: $input-color;
-
-      &:focus {
-        border: none;
-      }
-    }
-
-    button {
-      margin-top: 20px;
-      background: $button-background-color;
-      border: none;
-      font-size: 1.6em;
-      font-weight: 300;
-      padding: 5px 0;
-      width: 100%;
-      border-radius: 3px;
-      color: lighten($button-background-color, 40%);
-      border-bottom: 4px solid darken($button-background-color, 10%);
-
-      &:hover {
-        background: tint($button-background-color, 4%);
-        -webkit-animation: hop 1s;
-        animation: hop 1s;
-      }
-    }
-  }
+button {
+  margin-top: 20px;
+  border: none;
+  font-size: 1.6em;
+  font-weight: 300;
+  padding: 5px 0;
+  width: 100%;
+  border-radius: 3px;
 }
 
 .boton {
@@ -136,19 +102,15 @@ body, input, button {
   border-radius: 4px;
   background-color: rgb(76, 202, 224);
   color: #fff;
-
   font-size: 2.5rem;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-  box-shadow: 0 1px 0 rgba(255,255,255,.5) inset,
-    0 1px 3px rgba(0,0,0,.2);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset,
+    0 1px 3px rgba(0, 0, 0, .2);
   background-image: linear-gradient(15%);
 }
 
-
 /* Large Devices, Wide Screens */
-
-@media only screen and (max-width : 1500px) {
-}
+@media only screen and (max-width : 1500px) {}
 
 @media only screen and (max-width : 1200px) {
   .login {
