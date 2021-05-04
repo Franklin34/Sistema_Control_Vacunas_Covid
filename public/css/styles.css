@@ -41,6 +41,10 @@ body {
 }
 .sidebar {
   position: fixed;
+<<<<<<< Updated upstream
+=======
+  z-index: 1;
+>>>>>>> Stashed changes
   left: -250px;
   width: 250px;
   height: 100%;
