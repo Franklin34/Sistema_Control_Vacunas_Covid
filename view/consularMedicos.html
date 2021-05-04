@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../public/css/styles.css" />
-    <title>Consultar Medicos</title>
-  </head>
-  <body>
-    <div id="contenido">
-        <!--La Cabecera-->
-        <header>
-          <div id="logotipo">
-            <h1>Consultar Medicos</h1>
-          </div>
-          <div id="buscar">
-              <label for="buscar">Digite la cédula del médico a buscar: </label>
-              <input type="text" name="buscar" id="buscar" />
-              <input type="button" value="Buscar"/>
-          </div>
-        </header>
-        <!--Fin de Cabecera-->
-        <aside>
-          <nav>
-            <h4>Consultar Médicos</h4>
-            <div>
-              <a href="registrarMedicos.html">Home Administrador</a>
-              <a href="administrarMedicos.html">Modificar Médicos</a>
-              <a href="consularMedicos.html">Consultar Médicos</a>
-            </div>
-          </nav>
-    
-        </aside>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../public/css/styles.css" />
+  <link rel="icon" type="favicon/x-icon" href="../public/img/medico.png" />
+  <title>Consultar Medicos</title>
+</head>
+<body>
+  <!-- AQUI EMPIEZA EL MENU  -->
+  <input type="checkbox" id="check" />
+  <label for="check">
+    <arial class="fas fa-bars" id="btn">☰</arial>
+    <arial class="fas fa-times" id="cancel">☰</arial>
+  </label>
+  <aside class="sidebar">
+    <img src="../public/img/escu.png" id="doc" width="150px" />
+    <header>Administador</header>
+    <ul>
+      <li>
+        <a href="#"><i class="fas fa-qrcode"></i>Inicio</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-link"></i>Agregar Médicos</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-stream"></i>Modificar Médicos</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-calendar-week"></i>Consultar Médicos</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-calendar-week"></i>Cerrar Sesión</a>
+      </li>
+    </ul>
+  </aside>
+  <!-- AQUI TERMINA EL MENU -->
+     <!--La Cabecera-->
+     <div class="search">
+      <div id="logotipo">
+        <h1>Consultar Medicos</h1>
+      </div>
+      <div id="buscar">
+        <label for="buscar1">Digite el nombre del médico a buscar: </label>
+        <input type="text" name="buscar1" id="buscar1" />
+        <input type="button" value="Buscar"/>
+      </div>
     </div>
-  </body>
+    <!--Fin de Cabecera-->
+</body>
 </html>

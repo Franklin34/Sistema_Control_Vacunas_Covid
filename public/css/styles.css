@@ -174,7 +174,7 @@ float: left;
     border: 1px solid rgba(0, 0, 0, 0.212);
     border-radius: 10px;
     width: 1300px;
-    padding: 50px;
+    padding: 35px;
     box-shadow: 1px 1px 2px rgba(0, 0, 255, 0.308);
     background: rgba(240, 238, 235, 0.966);
 }
@@ -279,4 +279,76 @@ float: left;
     background-color: rgba(43, 13, 211, 0.486);
     border-radius: 5px;
     margin-right: 30px;
+}
+.search h3{
+  display: block;
+  font-family: "BebasNeue";
+  letter-spacing: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 1px rgba(43, 13, 211, 0.486);
+  font-weight: normal;
+  font-size: 30px;
+ /* text-align: center;*/
+}
+.search .bordebajo{
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#forma img{
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  width:"500px"
+}
+
+/*////////////////////////*/
+.contentInputs1{
+  margin: 500px;
+  margin-right: 0px;
+  margin-left: -22px;
+  margin-top: -71px;
+  margin-bottom: 0px;
+  
+}
+.contentInputs1 h3{
+  font-family: "BebasNeue";
+  letter-spacing: 2px;
+  color: black;
+  
+}
+.contentInputs1 .inputs{
+  float: left;
+  width: 575px;
+  padding: 20px;
+  margin: 20px;
+}
+.contentInputs1 .inputs label {
+  font-size: 25px;
+  font-family: "BebasNeue";
+  letter-spacing: 2px;
+  float: left;
+  width: 275px;
+  padding: 20px;
+  padding-left: 0px;
+}
+.contentInputs1 .inputs input[type = "text"],select{
+  padding: 7px;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 255, 0.356);
+}
+#datosMedicos input[type="submit"]{  
+  cursor: pointer;
+  width: 100px;
+  padding: 10px;
+  font-size: 20px;
+  margin-left: 600px;
+  border: 1px solid rgba(130, 124, 212, 0.267);
+  color: rgba(255, 255, 255, 0.842);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: rgba(43, 13, 211, 0.486);
+  border-radius: 5px;
+  margin-right: 30px;
 }
