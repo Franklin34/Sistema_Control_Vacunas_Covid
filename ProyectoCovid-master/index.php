@@ -1,8 +1,10 @@
 <?php
+
+//SE CAMBIO EL MODELO Y LA CLASE POR LA DE USUARIO
     require_once("config/conexion.php");
     if(isset($_POST['enviar'])){
-      require_once("modelo/administrador.php");
-      $administrador = new Administrador();
+      require_once("modelo/usuarioMedico.php");
+      $administrador = new UsuarioMedico();
       $administrador->login();
     }
 ?>
@@ -13,15 +15,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-
   <link rel="icon" type="favicon/x-icon" href="public/img/medico.png" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+  
   <link rel="stylesheet" href="public/css/styleLogin.css">
   <link rel="stylesheet" href="public/css/responsiveLogin.css">
 
@@ -29,15 +28,9 @@
   
 </head>
 <body>
-
-    
-
-
-  <div class="login">
-    <div class="heading">
-      <h2>Iniciar Sesión</h2>
-
-      <?php
+<div class="main_div">
+  <h2>Iniciar Sesión</h2>
+  <?php
           if(isset($_GET['m'])){
             switch($_GET['m']){
               case '1':
@@ -59,24 +52,20 @@
             }
           }
       ?>
-      
-     <form action="index.php" method="post">
-        <div class="input-group input-group-lg">
-          <span class="input-group-addon"><i class="fa fa-user"></i></span>
-          <input type="text" class="form-control" placeholder="Nombre de Usuario" name="usuario">
-        </div>
-        <br>
-        <div class="input-group input-group-lg">
-          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-          <input type="password" class="form-control" placeholder="Contraseña" name="password">
-        </div>
-        <br>
-        <center>
-          <button type="submit" class="boton" name="enviar">Iniciar Sesión</button>
-        </center>
-      </form>
-    </div>
+    <form action="index.php" method="post">
+      <div class="input_box">
+        <input type="text" placeholder="Usuario" name="usuario" >
+        <div class="icon"><i class="fas fa-user"></i></div>
+      </div>
+      <div class="input_box">
+        <input type="password" placeholder="Contraseña" name="password" >
+        <div class="icon"><i class="fas fa-lock"></i></div>
+      </div>
+      <div class="input_box boton">
+        <input type="submit" class="boton" name="enviar" value="Iniciar Sesión">
+    </form>
   </div>
+
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>

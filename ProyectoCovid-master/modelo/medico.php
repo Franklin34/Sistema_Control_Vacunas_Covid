@@ -20,7 +20,27 @@ class Medico extends Conectar{
             $sql->execute();
 
             return $resultado = $sql->fetchAll();
-        }
-
     }
+
+    
+    public function buscarRepetido($usuario){
+        $conectar = parent::Conexion();
+        parent::set_names();
+        $sql="SELECT * from medico WHERE usuario=?";
+        $stmt = $conectar->prepare($sql);
+        $stmt->bindValue(1,$usuario);
+        $stmt->execute();
+
+        $resultado = $stmt->fetch();
+
+        if(count($resultado) > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
+
 ?>
+

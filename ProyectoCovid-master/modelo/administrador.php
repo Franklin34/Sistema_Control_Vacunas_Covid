@@ -13,7 +13,7 @@
                    exit();
                }
                else{
-                   $sql = "SELECT * FROM administrador WHERE Usuario=? and Password=?";
+                   $sql = "SELECT * FROM administrador WHERE Usuario=? and Contraseña=?";
                    $stmt = $conectar->prepare($sql);
                    $stmt->bindValue(1,$usuario);
                    $stmt->bindValue(2,$password);
@@ -21,9 +21,9 @@
                    $resultado = $stmt->fetch();
 
                    if(is_array($resultado) and count($resultado)>0){
-                        $_SESSION['id_administrador'] = $resultado['id_administrador'];
+                        $_SESSION['ID_Admin'] = $resultado['ID_Admin'];
                         $_SESSION['Usuario'] = $resultado['Usuario'];
-                        $_SESSION['Password'] = $resultado['Password'];
+                        $_SESSION['Contraseña'] = $resultado['Contraseña'];
                         header("Location:".Conectar::ruta()."view/Home/homeAdmin.php");
                         exit();
                    }else{
