@@ -1,6 +1,6 @@
 <?php
   require_once("../../config/conexion.php");
-  if(isset($_SESSION['Cedula'])){
+  if(isset($_SESSION['cedula'])){
 ?>
 
 
@@ -57,48 +57,51 @@
         <h3>Desde esta ventana puede ingresar nuevos Pacientes:</h3>
         <h3 class="bordebajo">Ingrese la informacion del Paciente</h3>
         <div id="forma">
-          <img src="../../public/img/medico3.png" />
+          <img src="../../public/img/pacientes.png" width="500px" />
         </div>
 
-        <form method="POST" id="datosMedicos">
+        <form method="POST" id="datosPaciente" action="../../controller/Paciente.php?opc=insert">
           <div class="contentInputs1">
             <div class="inputs">
-              <label for="nombre">Nombre: </label>
-              <input type="text" name="nombre" id="nombre" required onblur="validarNombre()" />
+              <label for="nombre">Nombre Completo: </label>
+              <input type="text" name="nombre" id="nombre"  onblur="validarNombre()" required/>
               <label for="cedula">Cédula: </label>
-              <input type="text" name="cedula" id="cedula" required onblur="validarCedula()" />
+              <input type="text" name="cedula" id="cedula"  onblur="validarCedula()" required/>
               <label for="edad">Edad: </label>
-              <input type="text" name="edad" id="edad" required onblur="validarEdad()"/>
-              <label for="sedes">Sede: </label>
-              <select id="sedes" name="sedes">
-                <option>Alajuela</option>
-                <option>Limón</option>
-                <option>Cartago</option>
-                <option>Heredia</option>
-                <option>Puntarenas</option>
-                <option>Guanacaste</option>
-                <option>San José</option>
+              <input type="text" name="edad" id="edad"  onblur="validarEdad()" required/>
+
+              <label for="riesgo">Nivel de Riesgo: </label>
+              <select id="riesgo" name="riesgo">
+                <option>Alto</option>
+                <option>Medio</option>
+                <option>Bajo</option>
+              </select>
+
+              <label for="genero">Género: </label>
+              <select id="genero" name="genero">
+                <option>Masculino</option>
+                <option>Femenino</option>
+                <option>Otro</option>
               </select>
             </div>
 
             <div class="inputs">
-              <label for="apellidos">Apellidos: </label>
-              <input type="text" name="apellidos" id="apellidos" required onblur="validarApellido()" />
-              <label for="usuario">Usuario: </label>
-              <input type="text" name="usuario" id="usuario" required/>
+              <label for="telefono">Teléfono: </label>
+              <input type="text" name="telefono" id="telefono" onblur="validarEdad()" required/>
+              <label for="correo">Correo Eléctronico: </label>
+              <input type="email" name="correo" id="correo" required />
               <label for="password">Contraseña: </label>
               <input type="text" name="password" id="password" required/>
-              <label for="especialidad">Especialidad: </label>
-
-              <select id="especialidades" name="especialidades">
-                <option>Cirugía General</option>
-                <option>Cirugía Pediátrica</option>
-                <option>Cardiología</option>
-                <option>Dermatología</option>
-                <option>Geriatría</option>
-                <option>Ginecología y Obstetricia</option>
-                <option>Radiología</option>
+              <label for="vacuna">Marca de Vacuna: </label>
+              <input type="text" name="vacuna" id="vacuna" required/>
+              <label for="dosis">Número de dosis: </label>
+              <select id="dosis" name="dosis">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
               </select>
+
             </div>
             <input type="submit" value="Guardar" />
           </div>
@@ -109,6 +112,40 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
     <script src="registrarPaciente.js"></script>
+
+    <?php
+    if(isset($_GET['sweet'])){
+        switch($_GET['sweet']){
+          case '1':
+            ?>
+            <script>
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Paciente ya registrado',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            </script>
+            <?php
+            break;
+          case '2':
+            ?>
+            <script>
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'El paciente ha sido registrado',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            </script>
+            <?php
+            break;
+        }
+      }
+  ?>
+
   </body>
 </html>
 

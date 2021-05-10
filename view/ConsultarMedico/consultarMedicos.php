@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../public/css/styles.css" />
     <link rel="stylesheet" href="../../public/css/responsiveConsultar.css" />
+    <link rel="stylesheet" href="../../public/css/tabla.css" />
     <link rel="icon" type="favicon/x-icon" href="../../public/img/medico.png" />
     <title>Consultar Medicos</title>
   </head>
@@ -41,11 +42,46 @@
       <div id="logotipo">
         <h1>Consultar Medicos</h1>
       </div>
-      <div id="buscar">
-        <label for="buscar1">Digite el nombre del médico a buscar: </label>
-        <input type="text" name="buscar1" id="buscar1" />
-        <input type="button" value="Buscar" />
-      </div>
+      <!--
+      <form method="post" action="http://localhost/ProyectoCovid/view/ConsultarMedico/consultarMedicos.php">
+        <div id="buscar">
+          <label for="nombre">Digite el nombre del médico a buscar: </label>
+          <input type="text" name="nombre" id="nombre" />
+          <input type="submit" value="Buscar" />
+        </div>
+      </form>-->
+      
     </div>
+
+  <div id="wrapper">
+  
+  <table id="keywords" cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+        <th><span>Cédula</span></th>
+        <th><span>Nombre</span></th>
+        <th><span>Apellidos</span></th>
+        <th><span>Edad</span></th>
+        <th><span>Sede</span></th>
+        <th><span>Usuario</span></th>
+        <th><span>Contraseña</span></th>
+        <th><span>Especialidad</span></th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php
+      /*if(isset($_POST['nombre'])){
+        $nombre = $_POST['nombre'];
+        include("../../modelo/llenarTabla.php?nombre=$nombre");
+      }else{*/
+        require_once("../../modelo/llenarTabla.php");
+      //}
+      
+    ?>
+    </tbody>
+  </table>
+ </div> 
+
+  <script src="consultarMedico.js"></script>
   </body>
 </html>

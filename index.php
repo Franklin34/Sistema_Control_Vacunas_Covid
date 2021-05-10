@@ -1,10 +1,27 @@
 <?php
     require_once("config/conexion.php");
+
     if(isset($_POST['enviar'])){
-      require_once("modelo/administrador.php");
-      $administrador = new Administrador();
-      $administrador->login();
+      if(isset($_POST['radios'])){
+        if($_POST['radios'] == "admin"){
+          require_once("modelo/administrador.php");
+          $administrador = new Administrador();
+          $administrador->login();
+        }
+        if($_POST['radios'] == "medico"){
+          require_once("modelo/medico.php");
+          $medico = new Medico();
+          $medico->login();
+        }
+        if($_POST['radios'] == "paciente"){
+          require_once("modelo/paciente.php");
+          $paciente = new Paciente();
+          $paciente->login();
+        }
+      }
     }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -59,8 +76,16 @@
         <input type="password" placeholder="Contraseña" name="password" >
         <div class="icon"><i class="fas fa-lock"></i></div>
       </div>
+      
+      <div id="radioCaja">
+        <div><label>Administrador:</label> <input type="radio" name="radios" value="admin"></div>
+        <div><label>Médico:</label> <input type="radio" name="radios" value="medico"></div>
+        <div><label>Paciente:</label> <input type="radio" name="radios" checked value="paciente"></div>
+      </div>
+
       <div class="input_box boton">
         <input type="submit" class="boton" name="enviar" value="Iniciar Sesión">
+      </div>
     </form>
   </div>
 

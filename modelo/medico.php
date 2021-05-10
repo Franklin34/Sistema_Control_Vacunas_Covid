@@ -15,7 +15,7 @@ class Medico extends Conectar{
             $sql->bindValue(4,$edad);
             $sql->bindValue(5,$sede);
             $sql->bindValue(6,$usuario);
-            $sql->bindValue(7,$password);
+            $sql->bindValue(7,md5($password));
             $sql->bindValue(8,$especialidad);
 
             $sql->execute();    
@@ -43,5 +43,91 @@ class Medico extends Conectar{
             }
             return false;
         }
+
+        public function login(){
+            $conectar = parent::Conexion();
+            parent::set_names();
+
+            if(isset($_POST['enviar'])){
+               $usuario = $_POST['usuario']; 
+               $password = $_POST['password'];
+               if(empty($usuario) and empty($password)){
+                   header("Location:".Conectar::ruta()."index.php?m=2");
+                   exit();
+               }
+               else{
+                   $sql = "SELECT * FROM medico WHERE usuario=? and password=?";
+                   $stmt = $conectar->prepare($sql);
+                   $stmt->bindValue(1,$usuario);
+                   $stmt->bindValue(2,$password);
+                   $stmt->execute();
+                   $resultado = $stmt->fetch();
+
+                   if(is_array($resultado) and count($resultado)>0){
+                        $_SESSION['cedula'] = $resultado['cedula'];
+                        $_SESSION['usuario'] = $resultado['usuario'];
+                        $_SESSION['password'] = $resultado['password'];
+                        header("Location:".Conectar::ruta()."view/Home/homeMedico.php");
+                        exit();
+                   }else{
+                        header("Location:".Conectar::ruta()."index.php?m=1");
+                        exit();
+                   }
+               }
+            }
+        }
+
+        public function buscarMedico($nombre){
+            $conectar = parent::Conexion();
+            parent::set_names();
+
+            $sql="SELECT * FROM medico WHERE nombre LIKE '%$nombre%'";
+
+            $stmt = $conectar->prepare($sql);
+
+            $stmt->execute();
+            $resultado = $stmt->fetch();
+            
+            
+
+        }
+
+        public function actualizarMedico($cedula,$nombre,$apellidos,$edad,$sede,$usuario,$password,$especialidad){
+            $conectar = parent::Conexion();
+            parent::set_names();
+
+            $sql = "UPDATE medico SET cedula=?,nombre=?,apellidos=?,edad=?,sede=?,usuario=?,password=?,especialidad=? WHERE cedula=?";
+
+            $sql = $conectar->prepare($sql);
+
+
+            $sql->bindValue(1,$cedula);
+            $sql->bindValue(2,$nombre);
+            $sql->bindValue(3,$apellidos);
+            $sql->bindValue(4,$edad);
+            $sql->bindValue(5,$sede);
+            $sql->bindValue(6,$usuario);
+            $sql->bindValue(7,$password);
+            $sql->bindValue(8,$especialidad);
+            $sql->bindValue(9,$cedula);
+
+            $sql->execute();    
+
+            return $resultado = $sql->fetchAll();
+        }
+
+        public function borrar_medico($cedula){
+            $conectar = parent::Conexion();
+            parent::set_names();
+            $sql = "DELETE FROM medico WHERE cedula=?";
+            $sql = $conectar->prepare($sql);
+
+            $sql->bindValue(1,$cedula);
+
+            $sql->execute();
+
+            return $resultado = $sql->fetchAll();
+        }
+
     }
 ?>

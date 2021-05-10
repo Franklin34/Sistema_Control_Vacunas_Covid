@@ -14,5 +14,32 @@
                 header("Location:".Conectar::ruta()."view/RegistrarMedico/registrarMedicos.php?sweet=1");
             }
             break;
+
+        case 'buscar':
+            $cedula = $_POST['buscar1'];
+            header("Location:".Conectar::ruta()."view/AdministrarMedico/administrarMedicos.php");
+            return $datos = $medico->buscarMedico($cedula);
+
+        case 'mod_o_eliminar':
+            if(isset($_POST['modificar'])){
+                if($medico->buscarRepetido($_POST['usuario']) == true){
+                    $medico->actualizarMedico($_POST['cedula'],$_POST['nombre'],$_POST['apellidos'],$_POST['edad'],$_POST['sedes'],$_POST['usuario'],$_POST['password'],$_POST['especialidades'],$_POST['especialidades']);
+                    header("Location:".Conectar::ruta()."view/AdministrarMedico/administrarMedicos.php");
+                }
+                else{
+                    header("Location:".Conectar::ruta()."view/AdministrarMedico/administrarMedicos.php");
+                }
+                break;
+            }
+            else if(isset($_POST['eliminar'])){
+                if($medico->buscarRepetido($_POST['usuario']) == true){
+                    $medico->borrar_medico($_POST['cedula']);
+                    header("Location:".Conectar::ruta()."view/AdministrarMedico/administrarMedicos.php");
+                }
+                else{
+                    header("Location:".Conectar::ruta()."view/AdministrarMedico/administrarMedicos.php");
+                }
+                break;
+            }
     }
 ?>

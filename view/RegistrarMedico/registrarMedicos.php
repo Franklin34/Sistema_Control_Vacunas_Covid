@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../../public/css/styles.css" />
     <link rel="stylesheet" href="../../public/css/responsiveRegistrar.css" />
     <link rel="icon" type="favicon/x-icon" href="../../public/img/medico.png" />
-    <script src="../../public/js/jquery-3.6.0.min.js"></script>
     <title>Registrar Médicos</title>
   </head>
   <body>
@@ -120,7 +119,7 @@
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: 'No se registro el medico',
+              text: 'Nombre de Usuario Repetido',
               showConfirmButton: false,
               timer: 1500
             })

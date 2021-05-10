@@ -1,6 +1,6 @@
 <?php
   require_once("../../config/conexion.php");
-  if(isset($_SESSION['Cedula'])){
+  if(isset($_SESSION['cedula'])){
 ?>
 
 <!DOCTYPE html>

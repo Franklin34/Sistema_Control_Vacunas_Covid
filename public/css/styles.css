@@ -222,10 +222,10 @@ float: left;
 }
 #botones{
     position: absolute;
-    margin-left: 900px;
-    margin-top: 900px;
+    margin-left: 460px;
+    margin-top: 480px;
 }
-#botones input[type="button"]{  
+#botones input[type="button"], #botones input[type="submit"]{  
     cursor: pointer;
     width: 100px;
     padding: 10px;
@@ -290,13 +290,29 @@ float: left;
   padding: 20px;
   padding-left: 0px;
 }
-.contentInputs1 .inputs input[type = "text"],select{
+.contentInputs1 .inputs input[type = "text"],.contentInputs1 .inputs input[type = "email"],select{
   padding: 7px;
   border-radius: 5px;
   width: 100%;
   border: 1px solid rgba(0, 0, 255, 0.356);
 }
 #datosMedicos input[type="submit"]{  
+  cursor: pointer;
+  width: 100px;
+  padding: 10px;
+  font-size: 20px;
+  margin-left: 600px;
+  border: 1px solid rgba(130, 124, 212, 0.267);
+  color: rgba(255, 255, 255, 0.842);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: rgba(43, 13, 211, 0.486);
+  border-radius: 5px;
+  margin-right: 30px;
+}
+#consultar{
+  margin-top: 400px;
+}
+input[type="submit"]{  
   cursor: pointer;
   width: 100px;
   padding: 10px;
