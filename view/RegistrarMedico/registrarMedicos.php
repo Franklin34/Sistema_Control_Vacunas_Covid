@@ -1,3 +1,19 @@
+<?php
+  require_once("../../config/conexion.php");
+  $now = time();
+
+  if($now > $_SESSION['expire']) {
+    session_destroy();
+
+    echo "Su sesion a terminado,
+    <a href='http://13.59.37.197/ProyectoCovid/index.php'>Necesita Hacer Login</a>";
+    exit;
+  }
+  if(isset($_SESSION['id_administrador'])){
+    
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -7,7 +23,6 @@
     <link rel="stylesheet" href="../../public/css/styles.css" />
     <link rel="stylesheet" href="../../public/css/responsiveRegistrar.css" />
     <link rel="icon" type="favicon/x-icon" href="../../public/img/medico.png" />
-    <script src="../../public/js/jquery-3.6.0.min.js"></script>
     <title>Registrar Médicos</title>
   </head>
   <body>
@@ -34,7 +49,7 @@
           >
         </li>
         <li>
-          <a href="../ConsultarMedico/consularMedicos.php"
+          <a href="../ConsultarMedico/consultarMedicos.php"
             ><i class="fas fa-calendar-week"></i>Consultar Médicos</a
           >
         </li>
@@ -54,15 +69,15 @@
           <img src="../../public/img/medico3.png" />
         </div>
 
-        <form method="POST" id="datosMedicos">
+        <form method="POST" id="datosMedicos" action="../../controller/Medico.php?opc=insert">
           <div class="contentInputs1">
             <div class="inputs">
               <label for="nombre">Nombre: </label>
-              <input type="text" name="nombre" id="nombre" />
+              <input type="text" name="nombre" id="nombre" required onblur="validarNombre()" />
               <label for="cedula">Cédula: </label>
-              <input type="text" name="cedula" id="cedula" />
+              <input type="text" name="cedula" id="cedula" required onblur="validarCedula()" />
               <label for="edad">Edad: </label>
-              <input type="text" name="edad" id="edad" />
+              <input type="text" name="edad" id="edad" required onblur="validarEdad()"/>
               <label for="sedes">Sede: </label>
               <select id="sedes" name="sedes">
                 <option>Alajuela</option>
@@ -77,11 +92,11 @@
 
             <div class="inputs">
               <label for="apellidos">Apellidos: </label>
-              <input type="text" name="apellidos" id="apellidos" />
+              <input type="text" name="apellidos" id="apellidos" required onblur="validarApellido()" />
               <label for="usuario">Usuario: </label>
-              <input type="text" name="usuario" id="usuario" />
+              <input type="text" name="usuario" id="usuario" required/>
               <label for="password">Contraseña: </label>
-              <input type="text" name="password" id="password" />
+              <input type="text" name="password" id="password" required/>
               <label for="especialidad">Especialidad: </label>
 
               <select id="especialidades" name="especialidades">
@@ -103,5 +118,45 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
     <script src="registrarMedico.js"></script>
+
+    <?php
+    if(isset($_GET['sweet'])){
+        switch($_GET['sweet']){
+          case '1':
+            ?>
+            <script>
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'El nombre de usuario o cédula ya existe',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            </script>
+            <?php
+            break;
+          case '2':
+            ?>
+            <script>
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'El medico ha sido registrado',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            </script>
+            <?php
+            break;
+        }
+      }
+  ?>
   </body>
 </html>
+
+<?php
+  }
+  else{
+    header("Location:".Conectar::ruta()."index.php");
+  }
+?>

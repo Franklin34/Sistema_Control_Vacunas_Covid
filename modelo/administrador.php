@@ -24,7 +24,10 @@
                         $_SESSION['id_administrador'] = $resultado['id_administrador'];
                         $_SESSION['usuario'] = $resultado['usuario'];
                         $_SESSION['password'] = $resultado['password'];
-                        header("Location:".Conectar::ruta()."view/Home/homeAdmin.php");
+                        $_SESSION['start'] = time();
+                        $_SESSION['expire'] = $_SESSION['start'] + (15 * 60);
+                        
+                        header("Location:".Conectar::ruta()."view/Home/homeAdmin.php"); 
                         exit();
                    }else{
                         header("Location:".Conectar::ruta()."index.php?m=1");

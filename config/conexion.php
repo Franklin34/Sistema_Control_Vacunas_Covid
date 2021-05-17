@@ -5,7 +5,7 @@
         protected $dbh;
         protected function Conexion(){
             try{
-                $conectar = $this->dbh = new PDO("mysql:local=localhost;dbname=proyectocovid","root","");
+                $conectar = $this->dbh = new PDO("mysql:local=localhost;dbname=hospital","root","root");
                 return $conectar;
             }catch(Exception $e){
                 print "Error BD!: " . $e->getMessage() . "<br/>";
@@ -18,7 +18,7 @@
         }
 
         public static function ruta(){
-            return "http://localhost/ProyectoCovid2/";
+            return "http://13.59.37.197/ProyectoCovid/";
         }
     }
   

@@ -1,5 +1,16 @@
 <?php
   require_once("../../config/conexion.php");
+
+  $now = time();
+
+  if($now > $_SESSION['expire']) {
+    session_destroy();
+
+    echo "Su sesion a terminado,
+    <a href='http://13.59.37.197/ProyectoCovid/index.php'>Necesita Hacer Login</a>";
+    exit;
+  }
+  
   if(isset($_SESSION['id_administrador'])){
 ?>
 
@@ -10,8 +21,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="../../public/css/style.css" />
+    <link rel="stylesheet" href="../../public/css/responsiveAdministrar.css">
     <script type="text/javascript" src="../../public/js/script.js"></script>
     <link rel="icon" type="favicon/x-icon" href="../../public/img/medico.png" />
+    <script src="../../public/js/jquery-3.6.0.min.js"></script>
+    <script src="../../public/js/plotly-latest.min.js"></script>
     <title>Inicio</title>
   </head>
   <body>
@@ -35,7 +49,7 @@
           <a href="../AdministrarMedico/administrarMedicos.php"><i class="fas fa-stream"></i>Modificar Médicos</a>
         </li>
         <li>
-          <a href="../ConsultarMedico/consularMedicos.php"><i class="fas fa-calendar-week"></i>Consultar Médicos</a>
+          <a href="../ConsultarMedico/consultarMedicos.php"><i class="fas fa-calendar-week"></i>Consultar Médicos</a>
         </li>
         <li>
           <a href="../../modelo/logout.php"><i class="fas fa-calendar-week"></i>Cerrar Sesión</a>
@@ -52,20 +66,37 @@
       </div>
     </header>
 
-    <div class="Seccion1">
+    <div id="Seccion1">
       <br /><br /><br />
       <h1>Bienvenido al Sistema de Vacunación Covid-19</h1>
       <br />
-      <font size="5"
-        >Aquí se realiza el control de los Médicos del sistema</font
-      >
+      <h2>Aquí se realiza el control de los Pacientes del sistema</h1>
 
       <br /><br /><br />
       <h1>Últimas Estadísticas Registradas</h1>
     </div>
 
-    <div class="Seccion2"></div>
+
+    <div class="graficas">
+      <div id="Seccion2"></div>
+      <div id="Seccion3"></div>
+      <div id="Seccion4"></div>
+    </div>
   </body>
+
+
+  <script>
+    $(document).ready(function(){
+    $('#Seccion2').load('../../modelo/graficalineal.php');
+    });
+    $(document).ready(function(){
+    $('#Seccion3').load('../../modelo/barras.php');
+    });
+    $(document).ready(function(){
+    $('#Seccion4').load('../../modelo/graficaCircular.php');
+    });
+  </script>
+
 </html>
 
 <?php

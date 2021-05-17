@@ -1,3 +1,13 @@
+@media (max-width:1920px) {
+    .search{
+        margin-left: 330px;
+    }
+    .wrapper{
+        margin-top: 310px;
+        margin-left: 330px;
+    }
+}
+
 @media (max-width:1815px) {
     .search{
         margin-left: 200px;
@@ -94,4 +104,5 @@
         margin: 30px;
         width: 125px;
     }
+
 }
